@@ -11,7 +11,7 @@ import requests
 BASE_URL = 'https://jsonplaceholder.typicode.com'
 
 
-def main():
+if __name__ == "__main__":
     """Entry point when run as a script."""
     if len(sys.argv) != 2 or not sys.argv[1].isdigit():
         print("Usage: {} <EMPLOYEE_ID>".format(sys.argv[0]))
@@ -22,7 +22,7 @@ def main():
     # 1. Get employee name
     user_resp = requests.get("{}/users/{}".format(BASE_URL, emp_id))
     if user_resp.status_code != 200:
-        print("Employee not found.")
+        print("Error: Employee with ID {} not found.".format(emp_id))
         sys.exit(1)
 
     employee_name = user_resp.json().get("name")
@@ -42,7 +42,3 @@ def main():
     for task in completed:
         # one tab + one space exactly
         print("\t {}".format(task.get("title")))
-
-
-if __name__ == "__main__":
-    main()

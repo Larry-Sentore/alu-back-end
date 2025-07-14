@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 import requests
 import sys
+"""
+Using a REST API and an EMP_ID, save info about their TODO list in a csv file
+"""
 
 def fetch_employee_todo_progress(employee_id):
     # Fetch employee details
